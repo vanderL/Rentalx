@@ -1,4 +1,6 @@
-import { NextFunction, Request, Response } from 'express';
+import {
+  NextFunction, request, Request, Response,
+} from 'express';
 import { verify } from 'jsonwebtoken';
 
 import { AppError } from '../errors/AppError';
@@ -12,7 +14,7 @@ export default function ensureAuthenticated(
   req: Request,
   res: Response,
   next: NextFunction,
-) {
+): void {
   const authHeader = req.headers.authorization;
 
   if (!authHeader) {
@@ -31,6 +33,10 @@ export default function ensureAuthenticated(
     if (!user) {
       throw new AppError('User does not exists!');
     }
+
+    request.user = {
+      id: user_id,
+    };
 
     return next();
   } catch (error) {
