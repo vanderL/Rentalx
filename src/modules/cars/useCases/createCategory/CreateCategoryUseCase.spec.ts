@@ -1,15 +1,46 @@
-describe('Create Category', () => {
-  it('Should be able 9 - 5 equal 4', () => {
-    const soma = 9 - 5;
-    const resultado = 4;
+import { AppError } from '../../../../errors/AppError';
+import { CategoriesRepositoryFake } from '../../repositories/fakes/FakeCategoriesRepository';
+import { CreateCategoryUseCase } from './CreateCategoryUseCase';
 
-    expect(soma).toBe(resultado);
+let createCategoryUseCase: CreateCategoryUseCase;
+let categoriesRepositoryFake: CategoriesRepositoryFake;
+
+describe('Create Category', () => {
+  beforeEach(() => {
+    categoriesRepositoryFake = new CategoriesRepositoryFake();
+    createCategoryUseCase = new CreateCategoryUseCase(categoriesRepositoryFake);
   });
 
-  it('Should not be able 9 - 5 not equal 45', () => {
-    const soma = 9 - 5;
-    const resultado = 45;
+  it('shoul be able to create a new category', async () => {
+    const category = {
+      name: 'Category Test',
+      description: 'Category description Test',
+    };
 
-    expect(soma).not.toBe(resultado);
+    await createCategoryUseCase.execute({
+      name: category.name,
+      description: category.description,
+    });
+
+    const categoryCreated = await categoriesRepositoryFake.findByName(category.name);
+
+    expect(categoryCreated).toHaveProperty('id');
+  });
+
+  it('shoul not be able to create a new category with name duplicated ', async () => {
+    const category = {
+      name: 'Category Test',
+      description: 'Category description Test',
+    };
+
+    await createCategoryUseCase.execute({
+      name: category.name,
+      description: category.description,
+    });
+
+    expect(createCategoryUseCase.execute({
+      name: category.name,
+      description: category.description,
+    })).rejects.toBeInstanceOf(AppError);
   });
 });
