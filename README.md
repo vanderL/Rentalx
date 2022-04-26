@@ -3,7 +3,6 @@
 **RF(Requisitos Funcionais)**
 
 - O usuário deve poder cadastrar um novo carro;
-- O usuário deve poder listar todas as categorias;
 
 **RN(Regra de Negócio)**
 - Não deve ser possível cadastrar um carro com uma placa já existente;
