@@ -13,6 +13,8 @@ class Car {
 
   daily_rate: number;
 
+  available?: boolean;
+
   license_plate: string;
 
   fine_amount: number;
@@ -26,7 +28,8 @@ class Car {
   constructor() {
     if (!this.id) {
       this.id = uuidV4();
-      // this.created_at = new Date();
+      this.created_at = new Date();
+      this.available = true;
     }
   }
 }
