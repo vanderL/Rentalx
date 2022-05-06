@@ -72,6 +72,11 @@
         "devDependencies": [
           "**/*.spec.js"
         ]
+      },
+      {
+        "devDependencies": [
+          "**/*.spec.ts"
+        ]
       }
     ]
   },
