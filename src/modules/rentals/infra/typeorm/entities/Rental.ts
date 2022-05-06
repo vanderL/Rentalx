@@ -1,29 +1,36 @@
 /* eslint-disable indent */
-// import { Column, Entity, PrimaryColumn } from 'typeorm';
+import {
+  Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn,
+} from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
 
-// @Entity('Rentals')
+@Entity('rentals')
 class Rental {
-  // @PrimaryColumn()
+  @PrimaryColumn()
   id: string;
 
-  // @Column()
+  @Column()
   car_id: string;
 
-  // @Column()
+  @Column()
   user_id: string;
 
-  // @Column()
+  @Column()
   start_date: Date;
 
+  @Column()
   end_date: Date;
 
+  @Column()
   expected_return_date: Date;
 
+  @Column()
   total: number;
 
+  @CreateDateColumn()
   created_at: Date;
 
+  @UpdateDateColumn()
   updated_at: Date;
 
   constructor() {
