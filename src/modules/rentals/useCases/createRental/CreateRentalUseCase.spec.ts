@@ -5,9 +5,11 @@ import { FakeRentalsRepository } from '@modules/rentals/repositories/fakes/FakeR
 import { DayjsDateProvider } from '@shared/container/providers/DateProvider/implementations/DayjsDateProvider';
 
 import { CreateRentalUseCase } from './CreateRentalUseCase';
+import { FakeCarsRepository } from '@modules/cars/repositories/fakes/FakeCarsRepository';
 
 let createRentalUseCase: CreateRentalUseCase;
 let fakeRentalsRepository: FakeRentalsRepository;
+let fakeCarsRepository: FakeCarsRepository;
 let dayJsProvider: DayjsDateProvider;
 
 describe('Create Rental', () => {
@@ -15,8 +17,13 @@ describe('Create Rental', () => {
 
   beforeEach(() => {
     fakeRentalsRepository = new FakeRentalsRepository();
+    fakeCarsRepository = new FakeCarsRepository()
     dayJsProvider = new DayjsDateProvider();
-    createRentalUseCase = new CreateRentalUseCase(fakeRentalsRepository, dayJsProvider);
+    createRentalUseCase = new CreateRentalUseCase(
+      fakeRentalsRepository,
+      dayJsProvider,
+      fakeCarsRepository
+    );
   });
 
   it('Should be able to create a new rental', async () => {

@@ -64,6 +64,7 @@
 - Não deve ser possível cadastrar um novo aluguel caso já exista um aberto para o mesmo usuário;
 - Não deve ser possível cadastrar um novo aluguel caso já exista um aberto para o mesmo carro;
 - O Usuário deve estar logado na aplicação;
+- Ao realizar um aluguel, o status do carro deverá ser alterado para indisponível;
 
 # Devolução de carro
 
