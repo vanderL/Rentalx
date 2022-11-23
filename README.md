@@ -85,7 +85,7 @@
 # Listagem de Alugueis para usuário
 
 **RF**
-Deve ser possível realizar a busca de todos os alugueis para o usuário
+- Deve ser possível realizar a busca de todos os alugueis para o usuário
 
 **RN**
-O usuário deve estar logado na aplicação
+- O usuário deve estar logado na aplicação
