@@ -3,13 +3,14 @@ import { AppError } from '@errors/AppError';
 import { IUsersTokensRepository } from '@modules/accounts/repositories/IUsersTokensRepository';
 import { IDateProvider } from '@shared/container/providers/DateProvider/IDateProvider';
 import { verify, sign } from 'jsonwebtoken';
-import { inject } from 'tsyringe';
+import { inject, injectable } from 'tsyringe';
 
 interface IPayload {
   sub: string;
   email: string;
 }
 
+@injectable()
 class RefreshTokenUseCase {
   constructor(
     @inject("UsersTokensRepository")
