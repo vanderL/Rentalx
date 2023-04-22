@@ -5,7 +5,7 @@ import createConnection from '../index';
 
 async function create() {
   const connection = await createConnection('localhost');
-
+  console.log('nem aqui')
   const id = uuidV4();
   const password = await hash('admin', 8);
 
